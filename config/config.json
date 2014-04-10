@@ -1,0 +1,13 @@
+{
+	"redis": {
+		"host": "127.0.0.1",
+		"port": 6379,
+		"channel": "entity"
+	},
+	"FatFractal": {
+		"username": "YOUR USERNAME",
+		"password": "YOUR PASSWORD",
+		"url": "YOUR APLICATION URL",
+		"debug": false		
+	}
+}

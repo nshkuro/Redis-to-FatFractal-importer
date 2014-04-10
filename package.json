@@ -1,0 +1,23 @@
+{
+  "name": "Redis to FatFractal importer",  
+  "version": "0.0.1",
+  "author": "Nikolay Shkuro <nikolay@shkuro.net>",
+  "description": "Application fetch data from redis and store into FatFractal service",
+  "contributors": [ 
+    {
+      "name": "Nikolay Shkuro",
+      "email": "nikolay@shkuro.net"
+    } 
+  ],  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nshkuro/Redis-to-FatFractal-importer.git"
+  },  
+  "dependencies" : {
+    "redis"           : "*", 
+    "winston"         : "*",
+    "xmlhttprequest"  : "*",
+    "dom-storage"     : "*"
+  },  
+  "devDependencies": {}
+}
