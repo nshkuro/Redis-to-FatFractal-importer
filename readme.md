@@ -1,11 +1,21 @@
+## Real-time importer data from Redis to FatFractal.
 
-1. Installation
-Install all dependencies. Run command 
-"npm install ." 	
+Node.js application subscribed on redis channel. When message is received application got data from storage and save/update object into FatFractal.
 
-2. Configuration
-You can configure application via edit config/config.json file
+### 1. Installation
+Install all dependencies. Run command
+```javascript
+"npm install ."
+```
 
-3. Running
+### 2. Configuration
+You can configure application via edit file 
+```javascript
+config/config.json
+```
+
+### 3. Running
 Run application, for example run command 
+```javascript
 "node app.js"
+```
