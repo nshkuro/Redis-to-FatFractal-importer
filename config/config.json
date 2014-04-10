@@ -7,7 +7,7 @@
 	"FatFractal": {
 		"username": "YOUR USERNAME",
 		"password": "YOUR PASSWORD",
-		"url": "YOUR APLICATION URL",
+		"url": "YOUR APPLICATION URL",
 		"debug": false		
 	}
 }
