@@ -41,7 +41,7 @@ clientSubscribe.on("message", function(channel, key){
 
       object.key = key;  
       var key_arr = key.split(':');
-      var collection = key_arr[0];  
+      var collection = key_arr[0];
 
       FatFractal.saveObject(collection, object, function(obj, msg) {        
         if (typeof obj != 'object') {
