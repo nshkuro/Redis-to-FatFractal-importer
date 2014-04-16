@@ -38,8 +38,7 @@ clientSubscribe.on("message", function(channel, key){
       if (err) {
         logger.error(err);  
       }
-
-      object.key = key;  
+      
       var key_arr = key.split(':');
       var collection = key_arr[0];
 
