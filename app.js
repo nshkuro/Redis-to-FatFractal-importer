@@ -1,5 +1,6 @@
 var redis   = require("redis"),
     winston = require('winston'),
+    crypto = require("crypto"),
     config = require("./config/config.json"),
     logger = new (winston.Logger)({    
     transports: [      
@@ -33,10 +34,11 @@ clientSubscribe.subscribe(config.redis.channel);
 
 logger.info("Redis: subscribe on channel: %s", config.redis.channel);
 
-clientSubscribe.on("message", function(channel, key){
+clientSubscribe.on("message", function(channel, key) {
     logger.info("channel : %s, the message : %s", channel, key);
     
     client.hgetall(key, function(err, object) {
+
       if (err) {
         logger.error(err);  
       }
@@ -44,6 +46,12 @@ clientSubscribe.on("message", function(channel, key){
       var key_arr = key.split(':');
       var collection = key_arr[0];
 
+      if (config.ecryption.enabled) {
+        logger.info("Ecryption enabled. Data decrypted from : %s", config.ecryption.method);  
+        object.core = decrypt(object.core);
+        object.meta = decrypt(object.meta);
+      }
+      
       FatFractal.saveObject(collection, object, function(obj, msg) {        
         if (typeof obj != 'object') {
           logger.error(obj);
@@ -53,5 +61,14 @@ clientSubscribe.on("message", function(channel, key){
         }        
       });
     });
-
 });
+
+function decrypt(text)  { 
+  var ecryptionMethod = config.ecryption.method,
+      ecryptionKey = config.ecryption.key,
+      ecryptionIV = config.ecryption.iv,
+      decipher = crypto.createDecipheriv(ecryptionMethod, ecryptionKey, ecryptionIV);  
+  var dec = decipher.update(text,'base64','utf8');
+  dec += decipher.final('utf8');
+  return dec;
+}
