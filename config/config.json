@@ -5,6 +5,12 @@
 		"password": "",
 		"channel": "entity"
 	},
+     "ecryption": {
+          "enabled": true,
+          "method": "aes-128-cbc",
+          "key": "1234567890123456",
+          "iv": "1234567890123456"
+     },
 	"FatFractal": {
 		"username": "YOUR USERNAME",
 		"password": "YOUR PASSWORD",
