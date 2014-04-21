@@ -12,8 +12,10 @@ var redis   = require("redis"),
 
 logger.info('Application is run');
 
-var clientSubscribe = redis.createClient(config.redis.port, config.redis.host);
-var client = redis.createClient(config.redis.port, config.redis.host);
+var options = {};
+config.redis.password ? options.auth_pass = config.redis.password : options.auth_pass = null;
+var clientSubscribe = redis.createClient(config.redis.port, config.redis.host, options);
+var client = redis.createClient(config.redis.port, config.redis.host, options);
 
 clientSubscribe.on("error", function (err) {
   logger.error(err);
